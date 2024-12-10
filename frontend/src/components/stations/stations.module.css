@@ -1,0 +1,84 @@
+
+/* Container Styling */
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--background);
+  }
+  
+  /* Common Button Styling */
+  .button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--foreground);
+    color: var(--background);
+    border: 1px solid var(--foreground);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .button:hover {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  
+  /* Card Layout */
+  .card {
+    background: var(--background);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--foreground);
+  }
+  
+  .card h2, .card h1 {
+    color: var(--foreground);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .details {
+    margin-top: 1.5rem;
+  }
+  
+  .details p {
+    margin: 0.75rem 0;
+    line-height: 1.5;
+    color: var(--foreground);
+  }
+  
+  .details strong {
+    font-weight: 600;
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+  
+  .table th, .table td {
+    padding: 1rem;
+    border: 1px solid var(--foreground);
+  }
+  
+  .table th {
+    background: var(--foreground);
+    color: var(--background);
+    text-align: left;
+  }
+  
+  .table tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .card {
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    }
+  }
+  

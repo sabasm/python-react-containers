@@ -1,0 +1,36 @@
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backButton {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background-color: #e0e0e0;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.details {
+  margin-top: 1.5rem;
+}
+
+.details p {
+  margin: 0.75rem 0;
+  line-height: 1.5;
+}
+
+

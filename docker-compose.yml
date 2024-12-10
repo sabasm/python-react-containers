@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - NEXT_PUBLIC_APP_ENV=${APP_ENV:-development}
+      - NEXT_PUBLIC_API_TIMEOUT=${API_TIMEOUT:-5000}
+      - NEXT_PUBLIC_API_RETRY_COUNT=${API_RETRY_COUNT:-3}
+      - NEXT_PUBLIC_API_RETRY_DELAY=${API_RETRY_DELAY:-1000}
+      - NEXT_PUBLIC_MONITORING_ENABLED=${MONITORING_ENABLED:-false}
+      - NEXT_PUBLIC_METRICS_PREFIX=${METRICS_PREFIX:-frontend}
+      - NEXT_PUBLIC_METRICS_FLUSH_INTERVAL=${METRICS_FLUSH_INTERVAL:-10000}
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "http://localhost:3000/health" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - CORS_ORIGINS=http://frontend:3000
+      - ENVIRONMENT=${APP_ENV:-development}
+      - DEBUG=${DEBUG:-true}
+      - MONITORING_ENABLED=${MONITORING_ENABLED:-false}
+      - METRICS_PREFIX=${METRICS_PREFIX:-backend}
+      - METRICS_FLUSH_INTERVAL=${METRICS_FLUSH_INTERVAL:-10000}
+    volumes:
+      - ./backend:/app
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+networks:
+  app-network:
+    driver: bridge

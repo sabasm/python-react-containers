@@ -1,0 +1,59 @@
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backButton {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--foreground);
+  transition: all 0.2s ease-in-out;
+}
+
+.backButton:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.card {
+  background-color: var(--background);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--foreground);
+}
+
+.details {
+  margin-top: 1.5rem;
+}
+
+.details p {
+  margin: 0.75rem 0;
+  line-height: 1.5;
+  color: var(--foreground);
+}
+
+.details strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.title {
+  color: var(--foreground);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  }
+}
+
+
