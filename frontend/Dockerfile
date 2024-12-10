@@ -2,8 +2,9 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm ci
+RUN npm i --save-dev @types/node
 
 COPY . .
 RUN npm run build
@@ -11,5 +12,3 @@ RUN npm run build
 EXPOSE 3000
 ENV NODE_ENV=development
 CMD ["npm", "run", "dev"]
-
-
