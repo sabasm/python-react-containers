@@ -6,7 +6,16 @@ from .middleware import log_request_middleware
 from .config import API_CONFIG
 
 main_bp = Blueprint("main", __name__)
-CORS(main_bp)
+CORS(
+    main_bp,
+    resources={
+        r"/*": {
+            "origins": ["http://localhost:3000", "http://frontend:3000"],
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type"],
+        }
+    },
+)
 
 
 @main_bp.route("/")

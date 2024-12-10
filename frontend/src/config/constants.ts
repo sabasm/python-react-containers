@@ -11,6 +11,9 @@ export const API_ENDPOINTS = {
 export const POLLING_INTERVAL = 30000;
 
 export const getApiUrl = (endpoint: string): string => {
+  if (typeof window !== 'undefined') {
+    return `${config.api.clientBaseUrl}${endpoint}`;
+  }
   return `${config.api.baseUrl}${endpoint}`;
 };
 
